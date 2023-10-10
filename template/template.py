@@ -26,9 +26,11 @@ def createPDF(data: dict):
             if not os.path.exists(f'files/{fileName}'):
                 nameIsValid = True
                 print(fileName)
+    
 
-data = {
-    "filename": "file"
-}
 
-createPDF(data)
+# data = {
+#     "filename": "file"
+# }
+
+# createPDF(data)

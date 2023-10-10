@@ -1,8 +1,10 @@
 from tkinter import *
+from template.template import createPDF
+
 
 def createResponseWindow(data:dict):
     responseWindow = Tk()
 
-    mainLabel = Label(responseWindow, text=data['name']).pack()
+    generatePdfBtn = Button(responseWindow, text="Genarate PDF", command=lambda: createPDF(data)).pack()
 
     responseWindow.mainloop()
