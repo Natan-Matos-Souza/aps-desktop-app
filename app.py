@@ -7,21 +7,25 @@ mainWindow = Tk()
 mainWindow.title('Carbon Credit Calculator')
 mainWindow.minsize(width=1280, height=720)
 
+visualContents = []
+
 formFields = []
 
 fileNameLabel = Label(mainWindow, text="Digite o nome do arquivo (opcional): ")
 fileNameEntry = Entry(mainWindow)
-##This input can be empty
-# formFields.append(fileNameEntry)
 
-nameEntryLabel = Label(mainWindow, text="Digite o seu nome: ")
-nameEntry = Entry(mainWindow)
-formFields.append(nameEntry)
+visualContents.append(fileNameLabel)
+visualContents.append(fileNameEntry)
+
+companyNameLabel = Label(mainWindow, text='Digite o nome da sua empresa: ')
+companyNameEntry = Entry(mainWindow)
+
+visualContents.append(companyNameLabel)
+visualContents.append(companyNameEntry)
+
+formFields.append(companyNameEntry)
 
 #Function that gets user data and calls second window.
-
-messagebox.showinfo(title='Preencha o formulário.', message='Preencha os campos obrigatórios!')
-
 def getData():
     
     def formIsEmpty():
@@ -50,11 +54,10 @@ def getData():
 
 sendDataBtn = Button(mainWindow, text='Send', command=lambda: getData())
 
+visualContents.append(sendDataBtn)
 
-fileNameLabel.pack()
-fileNameEntry.pack()
-nameEntryLabel.pack()
-nameEntry.pack()
-sendDataBtn.pack()
+
+for contents in visualContents:
+    contents.pack()
 
 mainWindow.mainloop()

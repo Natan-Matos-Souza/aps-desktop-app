@@ -7,7 +7,7 @@ def createPDF(data: dict):
 
     if not isinstance(data, dict):
         print('"data" must be a dict')
-                                 
+    
     
     fileName = f'{data["filename"]}.pdf'
     filePath = data["filepath"]
