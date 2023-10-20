@@ -40,22 +40,22 @@ visualContents.append(companyVehiclesQuantityEntry)
 
 formFields.append(companyVehiclesQuantityEntry)
 
-carPoluitonLabel = Label(mainWindow, text='Digite a emissão média de carbono do veículo por quilômetro: (em KG)')
-carPoluitonEntry = Entry(mainWindow)
+carPolutionLabel = Label(mainWindow, text='Digite a emissão média de carbono do veículo por quilômetro: (em KG)')
+carPolutionEntry = Entry(mainWindow)
 
-visualContents.append(carPoluitonLabel)
-visualContents.append(carPoluitonEntry)
+visualContents.append(carPolutionLabel)
+visualContents.append(carPolutionEntry)
 
-formFields.append(carPoluitonEntry)
+formFields.append(carPolutionEntry)
 
-dailyPolutionLabel = Label(mainWindow, text="Digite quantos quilômetros, em média, um carro de sua empresa circula pela cidade por dia: ")
-dailyPolutionEntry = Entry(mainWindow)
+carDistancePerDayLabel = Label(mainWindow, text="Digite quantos quilômetros, em média, um carro de sua empresa circula pela cidade por dia: ")
+carDistancePerDayEntry = Entry(mainWindow)
 
 
-visualContents.append(dailyPolutionLabel)
-visualContents.append(dailyPolutionEntry)
+visualContents.append(carDistancePerDayLabel)
+visualContents.append(carDistancePerDayEntry)
 
-formFields.append(dailyPolutionEntry)
+formFields.append(carDistancePerDayEntry)
 
 #Function that gets user data and calls second window.
 def getData():
@@ -74,7 +74,9 @@ def getData():
         "filename": None,
         "company_name": companyNameEntry.get(),
         "company_address": companyAddressEntry.get(),
-        "vehicles_quantity": int(companyVehiclesQuantityEntry.get()) 
+        "vehicles_quantity": int(companyVehiclesQuantityEntry.get()),
+        "vehicle_polution_per_kilometer": float(carPolutionEntry.get()),
+        "vehicle_distance_per_day": int(carDistancePerDayEntry.get())
         }
 
         if fileNameEntry.get():
@@ -82,9 +84,8 @@ def getData():
         else:
             data['filename'] = 'file'
         
+        ##validating data
         mustBeInteger = [data['vehicles_quantity']]
-
-        mustBeString = [data['company_name'], data['company_address']]
         invalidForm = False
 
         for field in mustBeInteger:
@@ -92,7 +93,7 @@ def getData():
             if not isinstance(field, int) or not field > 0:
                 invalidForm = True
 
-        if (not invalidForm):
+        if not invalidForm:
             createResponseWindow(data)
         else:
             messagebox.showinfo(title='Preencha o formulário', message='Você não preencheu os campos obrigatórios.')
