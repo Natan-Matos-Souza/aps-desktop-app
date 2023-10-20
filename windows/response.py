@@ -4,7 +4,13 @@ from tkinter import filedialog
 from tkinter import messagebox
 
 
+
+
 def createResponseWindow(data:dict):
+
+    visualContents = []
+
+    formFields = []
 
     responseWindow = Tk()
 
@@ -26,7 +32,7 @@ def createResponseWindow(data:dict):
 
             for field in mustBeInt:
                 
-                if isinstance(field, int) or not field > 0:
+                if not isinstance(field, int) or not field > 0:
                     isFormInvalid = True
 
 
@@ -46,16 +52,30 @@ def createResponseWindow(data:dict):
             messagebox.showinfo(title="Formulário preenchido incorretamente", message="Preencha os campos obrigatórios do formulário!")
 
 
-    visualContents = []
 
-    formFields = []
+    futureVehicleQuantityLabel = Label(responseWindow, text="Digite a quantidade de carros que sua empresa pretender ter no futuro: ")
+    futureVehicleQuantityEntry = Entry(responseWindow)
+    
+    visualContents.append(futureVehicleQuantityLabel)
+    visualContents.append(futureVehicleQuantityEntry)
+
+    formFields.append(futureVehicleQuantityEntry)
+
+    futureVehiclePolutionPerKilometerLabel = Label(responseWindow, text="Digite a quantidade média de emissão de carbono dos carros que a empresa utilizará futuramente: ")
+    futureVehiclePolutionPerKilometerEntry = Entry(responseWindow)
+
+    visualContents.append(futureVehiclePolutionPerKilometerLabel)
+    visualContents.append(futureVehiclePolutionPerKilometerEntry)
+
+    formFields.append(futureVehiclePolutionPerKilometerEntry)
 
 
     generatePdfBtn = Button(responseWindow, text='Generate PDF', command=storePDF)
 
     visualContents.append(generatePdfBtn)
 
-    responseWindow.mainloop()
 
     for content in visualContents:
         content.pack()
+
+    responseWindow.mainloop()
