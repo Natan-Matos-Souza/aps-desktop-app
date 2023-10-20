@@ -23,7 +23,7 @@ def createPDF(data: dict):
 
             if not os.path.exists(f'{filePath}/{fileName}'):
                 nameIsValid = True
-                print(f'O arquivo foi salvo com nome: {fileName}')
+                # print(f'O arquivo foi salvo com nome: {fileName}')
 
     pdf = canvas.Canvas(f'{filePath}/{fileName}', pagesize=A4)
     pdf.drawCentredString(113*mm, 270*mm, 'Olá!')
