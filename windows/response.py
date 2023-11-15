@@ -14,6 +14,8 @@ def createResponseWindow(data:dict):
 
     responseWindow = Tk()
 
+    responseWindow.title('Sustentch | Cálculo de Crédito de Carbono')
+
     def storePDF():
 
         formIsEmpty = False
@@ -40,9 +42,9 @@ def createResponseWindow(data:dict):
             if not isFormInvalid:
                 path = filedialog.askdirectory(mustexist=True)
 
-                data['path'] = path
+                data['filepath'] = path
 
-                # createPDF(pdfData)
+                createPDF(data)
 
                 responseWindow.destroy()
             else:
@@ -70,7 +72,7 @@ def createResponseWindow(data:dict):
     formFields.append(futureVehiclePolutionPerKilometerEntry)
 
 
-    generatePdfBtn = Button(responseWindow, text='Generate PDF', command=storePDF)
+    generatePdfBtn = Button(responseWindow, text='Gerar Relatório', command=storePDF)
 
     visualContents.append(generatePdfBtn)
 
