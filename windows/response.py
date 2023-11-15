@@ -3,9 +3,6 @@ from template.template import createPDF
 from tkinter import filedialog
 from tkinter import messagebox
 
-
-
-
 def createResponseWindow(data:dict):
 
     visualContents = []
@@ -40,11 +37,22 @@ def createResponseWindow(data:dict):
 
 
             if not isFormInvalid:
+
+                formData = {
+                    "futureVehicleQuantityEntry": futureVehicleQuantityEntry.get(),
+                    "futureVehiclePolutionPerKilometerEntry": futureVehiclePolutionPerKilometerEntry.get(),
+                    "futureCarDistancePerDayEntry": futureCarDistancePerDayEntry.get()
+                }                    
+   
+
+
                 path = filedialog.askdirectory(mustexist=True)
 
                 data['filepath'] = path
 
-                createPDF(data)
+
+                print(formData)
+                # createPDF(data)
 
                 responseWindow.destroy()
             else:
@@ -70,6 +78,13 @@ def createResponseWindow(data:dict):
     visualContents.append(futureVehiclePolutionPerKilometerEntry)
 
     formFields.append(futureVehiclePolutionPerKilometerEntry)
+
+    futureCarDistancePerDayLabel = Label(responseWindow, text='Digite quantos quilômetros, em média, o carro percorrerá por dia:')
+    futureCarDistancePerDayEntry = Entry(responseWindow)
+
+    visualContents.append(futureCarDistancePerDayLabel)
+    visualContents.append(futureCarDistancePerDayEntry)
+    formFields.append(futureCarDistancePerDayEntry)
 
 
     generatePdfBtn = Button(responseWindow, text='Gerar Relatório', command=storePDF)
