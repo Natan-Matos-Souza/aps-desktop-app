@@ -39,11 +39,15 @@ def createResponseWindow(data:dict):
             if not isFormInvalid:
 
                 #Getting form data
-                formData = {
-                    "futureVehicleQuantityEntry": futureVehicleQuantityEntry.get(),
-                    "futureVehiclePolutionPerKilometerEntry": futureVehiclePolutionPerKilometerEntry.get(),
-                    "futureCarDistancePerDayEntry": futureCarDistancePerDayEntry.get()
-                }                    
+                # formData = {
+                #     "futureVehicleQuantityEntry": futureVehicleQuantityEntry.get(),
+                #     "futureVehiclePolutionPerKilometerEntry": futureVehiclePolutionPerKilometerEntry.get(),
+                #     "futureCarDistancePerDayEntry": futureCarDistancePerDayEntry.get()
+                # }
+
+                data['futureVehicleQuantityEntry'] = futureVehicleQuantityEntry.get()
+                data['futureVehiclePolutionPerKilometerEntry'] = futureVehiclePolutionPerKilometerEntry.get()
+                data['futureCarDistancePerDayEntry'] = futureCarDistancePerDayEntry.get()
 
 
                 def calculateCarbonCredit(firstFormData, secondFormData):
@@ -60,8 +64,8 @@ def createResponseWindow(data:dict):
                 data['filepath'] = path
 
 
-                # print(formData)
-                createPDF(data)
+                print(data)
+                # createPDF(data)
 
                 responseWindow.destroy()
             else:
