@@ -1,6 +1,7 @@
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import mm
+from datetime import datetime
 import os
 
 def createPDF(data: dict):
@@ -9,6 +10,8 @@ def createPDF(data: dict):
         print('"data" must be a dict')
     
     
+
+    data['date'] = f'{datetime.today().day}/{datetime.today().month}/{datetime.today().year}'
     fileName = f'{data["filename"]}.pdf'
     filePath = data["filepath"]
 
@@ -42,9 +45,9 @@ def createPDF(data: dict):
     pdf.drawString(20*mm, 240*mm, 'Endereço da Empresa:')
     pdf.drawString(20*mm, 230*mm, 'Data do documento:')
     pdf.setFillColorRGB(0, 0, 0)
-    # pdf.drawCentredString(77*mm, 250*mm, data["companyName"])
-    # pdf.drawCentredString(77*mm, 240*mm, data["companyCity"])
-    # pdf.drawCentredString(77*mm, 230*mm, data["date"])
+    pdf.drawCentredString(77*mm, 250*mm, data["company_name"])
+    pdf.drawCentredString(77*mm, 240*mm, data["company_address"])
+    pdf.drawCentredString(77*mm, 230*mm, data["date"])
 
 
 

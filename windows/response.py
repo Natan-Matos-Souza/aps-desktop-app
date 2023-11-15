@@ -50,22 +50,25 @@ def createResponseWindow(data:dict):
                 data['futureCarDistancePerDayEntry'] = futureCarDistancePerDayEntry.get()
 
 
-                def calculateCarbonCredit(firstFormData, secondFormData):
+                # def calculateCarbonCredit(formData):
 
-                    global data
+                #     polutionInfo = formData['']
 
+                    
 
-                    reducedPolutionPerDay = firstFormData['']
+                #     return polutionInfo
 
 
 
                 path = filedialog.askdirectory(mustexist=True)
 
+                # polutionInfo = calculateCarbonCredit(data)
+
                 data['filepath'] = path
 
 
-                print(data)
-                # createPDF(data)
+                # print(data)
+                createPDF(data)
 
                 responseWindow.destroy()
             else:
