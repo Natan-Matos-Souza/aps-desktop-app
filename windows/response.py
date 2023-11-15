@@ -38,12 +38,21 @@ def createResponseWindow(data:dict):
 
             if not isFormInvalid:
 
+                #Getting form data
                 formData = {
                     "futureVehicleQuantityEntry": futureVehicleQuantityEntry.get(),
                     "futureVehiclePolutionPerKilometerEntry": futureVehiclePolutionPerKilometerEntry.get(),
                     "futureCarDistancePerDayEntry": futureCarDistancePerDayEntry.get()
                 }                    
-   
+
+
+                def calculateCarbonCredit(firstFormData, secondFormData):
+
+                    global data
+
+
+                    reducedPolutionPerDay = firstFormData['']
+
 
 
                 path = filedialog.askdirectory(mustexist=True)
@@ -51,8 +60,8 @@ def createResponseWindow(data:dict):
                 data['filepath'] = path
 
 
-                print(formData)
-                # createPDF(data)
+                # print(formData)
+                createPDF(data)
 
                 responseWindow.destroy()
             else:

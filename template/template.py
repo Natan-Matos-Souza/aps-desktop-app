@@ -26,5 +26,26 @@ def createPDF(data: dict):
                 # print(f'O arquivo foi salvo com nome: {fileName}')
 
     pdf = canvas.Canvas(f'{filePath}/{fileName}', pagesize=A4)
-    pdf.drawCentredString(113*mm, 270*mm, 'Olá!')
+    
+    pdf.setFillColorRGB(0, 0, 0)
+    pdf.setFontSize(18)
+    pdf.drawCentredString(113*mm, 270*mm, 'Relatório Sobre Crédito de Carbono')
+
+
+    ##
+
+    ##PDF COMPANY INFO
+    pdf.setFillColorRGB(0, 255, 0)
+    pdf.setFontSize(12)
+
+    pdf.drawString(20*mm, 250*mm, 'Nome da Empresa:')
+    pdf.drawString(20*mm, 240*mm, 'Endereço da Empresa:')
+    pdf.drawString(20*mm, 230*mm, 'Data do documento:')
+    pdf.setFillColorRGB(0, 0, 0)
+    # pdf.drawCentredString(77*mm, 250*mm, data["companyName"])
+    # pdf.drawCentredString(77*mm, 240*mm, data["companyCity"])
+    # pdf.drawCentredString(77*mm, 230*mm, data["date"])
+
+
+
     pdf.save()    
