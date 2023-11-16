@@ -45,29 +45,38 @@ def createResponseWindow(data:dict):
                 #     "futureCarDistancePerDayEntry": futureCarDistancePerDayEntry.get()
                 # }
 
-                data['futureVehicleQuantityEntry'] = futureVehicleQuantityEntry.get()
-                data['futureVehiclePolutionPerKilometerEntry'] = futureVehiclePolutionPerKilometerEntry.get()
-                data['futureCarDistancePerDayEntry'] = futureCarDistancePerDayEntry.get()
+                data['futureVehicleQuantity'] = futureVehicleQuantityEntry.get()
+                data['futureVehiclePolutionPerKilometer'] = futureVehiclePolutionPerKilometerEntry.get()
+                data['futureCarDistancePerDay'] = futureCarDistancePerDayEntry.get()
 
 
-                # def calculateCarbonCredit(formData):
+                def calculateCarbonCredit(formData):
 
-                #     polutionInfo = formData['']
+                    polutionInfo = {}
 
+                    polutionInfo['currentPolutionPerDay'] = float(formData["vehicle_distance_per_day"])  * float(formData["vehicle_polution_per_kilometer"]) * float(formData["vehicles_quantity"])
+
+                    polutionInfo['futurePolutionPerDay'] = float(formData['futureVehiclePolutionPerKilometer']) * float(formData['futureCarDistancePerDay']) * float(formData['futureVehicleQuantity'])
+
+                    polutionInfo['carbonReduction'] = polutionInfo["currentPolutionPerDay"] - polutionInfo["futurePolutionPerDay"]
+
+                    polutionInfo['daysToGetCarbonCredit'] = 1000000/polutionInfo['carbonReduction']
                     
 
-                #     return polutionInfo
+                    return polutionInfo
 
 
 
                 path = filedialog.askdirectory(mustexist=True)
 
-                # polutionInfo = calculateCarbonCredit(data)
+                polutionInfo = calculateCarbonCredit(data)
 
                 data['filepath'] = path
 
-
-                # print(data)
+                data['carbonReductionPerDay'] = polutionInfo['carbonReduction']
+                data['carbonReductionPerMonth'] = data['carbonReductionPerDay'] * 30
+                data['carbonReductionPerYear'] = data['carbonReductionPerDay'] * 30 * 12
+                data['daysToGetCarbonCredit'] = polutionInfo['daysToGetCarbonCredit']
                 createPDF(data)
 
                 responseWindow.destroy()
