@@ -53,7 +53,8 @@ def createPDF(data: dict):
     pdf.drawString(70*mm, 240*mm, data["company_address"])
     pdf.drawString(70*mm, 230*mm, data["date"])
     pdf.drawString(80*mm, 220*mm, f'{data["carbonReductionPerDay"]} KG por dia')
-    pdf.drawString(80*mm, 210*mm, f'{data["carbonReductionPerMonth"]} KG por dia')
+    pdf.drawString(80*mm, 210*mm, f'{data["carbonReductionPerMonth"]} KG por mês')
+    pdf.drawString(80*mm, 200*mm, f'{data["carbonReductionPerYear"]} KG por ano')
     pdf.drawString(146*mm, 190*mm, f'{data["carbonReductionPerYear"]} dias')
 
 

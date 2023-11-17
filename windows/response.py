@@ -38,13 +38,6 @@ def createResponseWindow(data:dict):
 
             if not isFormInvalid:
 
-                #Getting form data
-                # formData = {
-                #     "futureVehicleQuantityEntry": futureVehicleQuantityEntry.get(),
-                #     "futureVehiclePolutionPerKilometerEntry": futureVehiclePolutionPerKilometerEntry.get(),
-                #     "futureCarDistancePerDayEntry": futureCarDistancePerDayEntry.get()
-                # }
-
                 data['futureVehicleQuantity'] = futureVehicleQuantityEntry.get()
                 data['futureVehiclePolutionPerKilometer'] = futureVehiclePolutionPerKilometerEntry.get()
                 data['futureCarDistancePerDay'] = futureCarDistancePerDayEntry.get()
